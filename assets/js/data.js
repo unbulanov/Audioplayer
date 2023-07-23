@@ -30,5 +30,12 @@ export const data = [
         track: "Instant Crush (feat. Julian Casablancas",
         group: "Daft Punk",
         year: 2013,
+    },
+    {   id: 5,
+        link: "beat5.mp3",
+        genre: "electronic",
+        track: "On Melancholy Hill",
+        group: "Gorillaz",
+        year: 2010,
     }
 ]
