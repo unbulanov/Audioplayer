@@ -1,11 +1,13 @@
 import { data } from "./data.js";
-import { toMinAndSec } from "./util.js";
+import { shuffle, toMinAndSec } from "./util.js";
 
 const AudioController = {
     state: {
         audios: [],
         current: {},
-        playing: false
+        repeating: false,
+        playing: false,
+        volume: 0.5,
     },
 
     init() {
@@ -17,11 +19,42 @@ const AudioController = {
     initVariables() {
         this.playButton = null;
         this.audioList = document.querySelector('.items');
-        this.currentItem = document.querySelector('.current')
+        this.currentItem = document.querySelector('.current');
+        this.repeatButton = document.querySelector('.handling-repeat');
+        this.volumeButton = document.querySelector('.controls-volume');
+        this.shuffleButton = document.querySelector(".handling-shuffle");
     },
 
     initEvents() {
         this.audioList.addEventListener("click", this.handleItem.bind(this));
+        this.repeatButton.addEventListener("click", this.handleRepeat.bind(this));
+        this.volumeButton.addEventListener("change", this.handleVolume.bind(this));
+        this.shuffleButton.addEventListener("click", this.handleShuffle.bind(this));
+    },
+
+    handleShuffle() {
+        const { children } = this.audioList;
+        const shuffled = shuffle([...children]);
+    
+        this.audioList.innerHTML = "";
+        shuffled.forEach((item) => this.audioList.appendChild(item));
+    },
+
+    handleVolume({ target: { value } }) {
+        const { current } = this.state;
+    
+        this.state.volume = value;
+    
+        if (!current?.audio) return;
+    
+        current.audio.volume = value;
+    },
+
+    handleRepeat({ currentTarget }) {
+        const { repeating } = this.state;
+    
+        currentTarget.classList.toggle("active", !repeating);
+        this.state.repeating = !repeating;
     },
 
     handleAudioPlay() {
