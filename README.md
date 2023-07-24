@@ -1,1 +1,1 @@
-![SpotiMy](https://spoti-my.vercel.app)
+[SpotiMy](https://spoti-my.vercel.app)
