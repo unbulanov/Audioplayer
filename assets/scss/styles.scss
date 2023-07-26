@@ -1,4 +1,4 @@
-$primary: #ff874a;
+$primary: #ffff;
 
 @mixin coverBg() {
   background-size: cover;
@@ -8,21 +8,21 @@ $primary: #ff874a;
 
 @mixin svgFill() {
   &:hover {
-    fill: lighten($primary, 15%);
+    fill: lighten($primary, 10%);
   }
 
   &:active {
-    fill: darken($primary, 15%);
+    fill: darken($primary, 10%);
   }
 }
 
 @mixin svgStroke() {
   &:hover {
-    stroke: lighten($primary, 15%);
+    stroke: lighten($primary, 10%);
   }
 
   &:active {
-    stroke: darken($primary, 15%);
+    stroke: darken($primary, 10%);
   }
 }
 
@@ -51,7 +51,7 @@ body {
 }
 
 h1 {
-  font-weight: 700;
+  font-weight: 500;
   font-size: 32px;
   line-height: 37px;
   color: #ffffff;
